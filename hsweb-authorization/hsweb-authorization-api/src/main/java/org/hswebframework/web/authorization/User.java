@@ -47,7 +47,7 @@ public interface User extends Dimension {
     /**
      * @return 用户状态
      */
-    byte getStatus();
+    Byte getStatus();
 
     @Override
     default DimensionType getType() {

@@ -26,7 +26,7 @@ public class SimpleUser implements User {
 
     private String userType;
 
-    private byte status;
+    private Byte status;
 
     private Map<String, Object> options;
 }
