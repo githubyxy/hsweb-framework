@@ -102,6 +102,9 @@ public class AuthorizationController {
                                             .authenticate(Mono.just(new PlainTextUsernamePasswordAuthenticationRequest(username, password)))
                                             .switchIfEmpty(Mono.error(() -> new AuthenticationException(AuthenticationException.ILLEGAL_PASSWORD)))
                                             .flatMap(auth -> {
+                                                if ((byte)0 == auth.getUser().getStatus()) {
+                                                    return Mono.error(new AuthenticationException(AuthenticationException.USER_DISABLED));
+                                                }
                                                 //触发授权成功事件
                                                 AuthorizationSuccessEvent event = new AuthorizationSuccessEvent(auth, parameterGetter);
                                                 event.getResult().put("userId", auth.getUser().getId());

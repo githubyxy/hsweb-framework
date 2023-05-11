@@ -44,6 +44,11 @@ public interface User extends Dimension {
      */
     String getUserType();
 
+    /**
+     * @return 用户状态
+     */
+    byte getStatus();
+
     @Override
     default DimensionType getType() {
         return DefaultDimensionType.user;

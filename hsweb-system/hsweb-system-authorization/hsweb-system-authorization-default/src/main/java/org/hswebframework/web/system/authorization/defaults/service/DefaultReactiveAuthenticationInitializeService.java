@@ -68,6 +68,7 @@ public class DefaultReactiveAuthenticationInitializeService
                                            .name(user.getName())
                                            .username(user.getUsername())
                                            .userType(user.getType())
+                                           .status(user.getStatus())
                                            .build());
 
             return initPermission(authentication)
